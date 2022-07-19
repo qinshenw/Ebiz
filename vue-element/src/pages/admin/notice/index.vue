@@ -1,7 +1,7 @@
 <template>
     <div class="home-container">
         <div style="width:360px;">
-            <el-upload class="upload-demo" ref="upexcelInfo" drag action="/upload"
+            <el-upload class="upload-demo" ref="upexcelInfo" :data="{username: user.name}" drag action="/upload"
                 multiple :auto-upload="false">
                 <i class="el-icon-upload"></i>
                 <div class="el-upload__text"><em>Chick to choose your dataset</em></div>
@@ -14,16 +14,21 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
     name: 'index',
     data() {
-        return {}
+        return { 
+   
+        }
     },
+      computed: {
+    ...mapGetters('account', ['user']),
+  },
     methods: {
         uploadBtn() {
-            this.$refs.upexcelInfo.submit();
-
-       
+            this.$refs.upexcelInfo.submit(); 
         },
     },
 }
