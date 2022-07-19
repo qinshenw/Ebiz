@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.mapper.BillMapper">
+    <select id="selectDto" resultType="edu.dto.BillDto">
+        select s.*, u.username, u.name nickname,u.qq,u.email,
+               g.no goodsno, g.room goodsroom,g.size goodssize
+        from bill s
+                 left join user u on u.id = s.user_id
+                 left join goods g on g.user_id = s.user_id
+            ${ew.customSqlSegment}
+    </select>
+</mapper>

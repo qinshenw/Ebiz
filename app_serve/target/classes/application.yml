@@ -1,0 +1,51 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /
+  port: 8888
+
+spring:
+  # 数据库配置
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ebiz?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 1
+  jackson:
+    default-property-inclusion: non_null
+  # 环境
+  profiles:
+    active: dev
+  servlet:
+    multipart:   #设置上传文件大小
+      max-file-size: 200MB  #单个文件的大小
+      max-request-size: 200MB  #单次请求的文件的总大小
+      enabled: true
+  application:
+    name: vue_wygl_210507
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  global-config:
+    banner: false
+
+## 日志
+logging:
+  ## 日志等级
+  level:
+    # 打印sql
+    edu: debug
+## 自定义配置
+fast:
+  ## 上传文件路径 主要是图片
+  upload:
+    path: D:/data_upload/
+  ## 下面的可以删除
+  generate:
+    global:
+      enable: false
+      domainPackage: edu.domain
+    dataSource:
+      delOverColumn: false
