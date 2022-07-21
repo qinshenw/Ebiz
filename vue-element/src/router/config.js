@@ -81,6 +81,14 @@ const options = {
             {
               meta: {
                 icon: 'align-left',
+              },
+              path: 'dataSetList',
+              name: 'Dataset List',
+              component: () => import('@/pages/admin/notice/dataSetList'),
+            },
+            {
+              meta: {
+                icon: 'align-left',
                 authority: {
                   role: 'admin'
                 },
