@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <div v-for="(item, i) in dataList" :key="i" class="datasetItem">
-      {{ item.name }}
+      {{ item.path }}
     </div>
     <!-- <div class="pageBox">
       <el-pagination
@@ -30,9 +30,9 @@ export default {
   },
   mounted() {
     post('/api/edge/list', {
-      username: this.user.name
+      username: user.name
     }).then((res) => {
-      this.dataList = res.data.files;
+      this.dataList = res.data;
     });
   },
   computed: {
