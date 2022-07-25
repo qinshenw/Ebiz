@@ -33,7 +33,7 @@ module.exports = {
     // 代理
     proxy: {
       '/upload': {     //这里最好有一个 /
-        target: 'http://127.0.0.1:8888/api/model/upload',  // 后台接口域名
+        target: 'http://127.0.0.1:8888/api/model',  // 后台接口域名
         changeOrigin: true,  //是否跨域
         pathRewrite: {
           '^/upload': ''
