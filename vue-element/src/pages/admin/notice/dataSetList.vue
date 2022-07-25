@@ -30,7 +30,7 @@ export default {
   },
   mounted() {
     post('/api/edge/list', {
-      username: user.name
+      username: this.user.name
     }).then((res) => {
       this.dataList = res.data;
     });
