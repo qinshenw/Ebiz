@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.mapper.ReportMapper">
+
+    <select id="selectDisplayDto" resultType="edu.dto.ReportDto">
+        select m.value1, m.value2, m.value3, m.value4, m.value5, m.value6, m.value7, m.value8, m.value9, m.value10, m.value11, m.value12
+        from report m
+            ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectExportDto" resultType="edu.dto.ModelFileDto">
+        select m.username. m.path
+        from model_file m
+            ${ew.customSqlSegment}
+    </select>
+
+</mapper>

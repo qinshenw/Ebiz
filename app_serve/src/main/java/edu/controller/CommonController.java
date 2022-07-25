@@ -42,7 +42,7 @@ public class CommonController extends BaseController {
      * @return
      */
     @PostMapping("upload")
-    public JsonResponse<UploadResp> upload(MultipartFile file, String mark) {
+    public JsonResponse<UploadResp> upload(MultipartFile file, String username, String mark) {
         if (file == null || file.isEmpty()) {
             return JsonResponse.fail("请选择要上传的文件");
         }
