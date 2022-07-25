@@ -1,9 +1,9 @@
 <template>
   <div class="home-container">
     <div v-for="(item, i) in dataList" :key="i" class="datasetItem">
-      {{ item }}
+      {{ item.name }}
     </div>
-    <div class="pageBox">
+    <!-- <div class="pageBox">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -13,19 +13,27 @@
         :total="1000"
       >
       </el-pagination>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
+import { post } from "@/utils/request";
 import { mapGetters } from "vuex";
 
 export default {
   name: "index",
   data() {
     return {
-      dataList: ["Dataset 1", "Dataset 2", "Dataset 3", "Dataset 4"],
+      dataList: [],
     };
+  },
+  mounted() {
+    post('/api/edge/list', {
+      username: this.user.name
+    }).then((res) => {
+      this.dataList = res.data.files;
+    });
   },
   computed: {
     ...mapGetters("account", ["user"]),
@@ -34,8 +42,11 @@ export default {
 };
 </script>
 <style>
-.el-dialog, .el-pager li, .btn-prev,.btn-next{
-    background: transparent !important;
+.el-dialog,
+.el-pager li,
+.btn-prev,
+.btn-next {
+  background: transparent !important;
 }
 </style>
 <style scoped>
