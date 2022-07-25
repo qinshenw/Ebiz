@@ -1,134 +1,162 @@
 <template>
-  <a-card :bordered="false">
-    <el-form :inline="true" :model="formSearch" class="demo-form-inline" size="small">
-      <el-form-item label="用户名">
-        <el-input v-model="formSearch.username"></el-input>
-      </el-form-item>
-      <el-form-item label="姓名">
-        <el-input v-model="formSearch.nickname"></el-input>
-      </el-form-item>
-      <el-form-item label="楼栋号">
-        <el-input v-model="formSearch.goodsNo"></el-input>
-      </el-form-item>
-      <el-form-item label="房间号">
-        <el-input v-model="formSearch.goodsRoom"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <a-button type="primary" @click="onSubmit">查询</a-button>
-      </el-form-item>
-
-    </el-form>
-    <el-table :data="tableData" border stripe style="width: 100%">
-      <el-table-column prop="username" label="用户名"/>
-      <el-table-column prop="nickname" label="姓名"/>
-      <el-table-column prop="nickname" label="QQ"/>
-      <el-table-column prop="nickname" label="邮箱"/>
-      <el-table-column prop="goodsNo" label="楼栋号"/>
-      <el-table-column prop="goodsRoom" label="房间号"/>
-      <el-table-column prop="unitPrice" label="单价"/>
-      <el-table-column prop="total" label="总价"/>
-      <el-table-column prop="status" label="状态"/>
-      <el-table-column prop="date" label="收费周期"/>
-      <el-table-column label="操作" fixed="right" width="150px">
-        <template slot-scope="scope">
-          <a-button type="link" size="small" v-if="scope.row.status === '待支付' && user.role === 'admin'"
-                    @click="cuijiao(scope.row.id)">催缴
-          </a-button>
-          <a-popconfirm title="确认删除吗？" @confirm="del(scope.row.id)" style="margin-left: 6px"
-                        v-if="user.role === 'admin'">
-            <a-button type="link" size="small">删除</a-button>
-          </a-popconfirm>
-
-          <a-popconfirm title="确认支付吗？" @confirm="zf(scope.row.id)" style="margin-left: 6px"
-                        v-if="scope.row.status !== '已支付' && user.role === 'user'">
-            <a-button type="link" size="small">支付</a-button>
-          </a-popconfirm>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div style="  text-align: center;padding-top:15px">
-      <el-pagination
-          :page-size="8"
-          @current-change="pageChange"
-          background
-          layout="prev, pager, next"
-          :total="total"
-      ></el-pagination>
+  <div class="home-container">
+    <div class="titBox">
+      <h2>Dataset 1</h2>
+      <div>Export Report</div>
     </div>
-
-  </a-card>
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="k1"> </el-table-column>
+      <el-table-column prop="lou" label="loU"> </el-table-column>
+      <el-table-column prop="area" label="Area"> </el-table-column>
+      <el-table-column prop="maxDetextions" label="MaxDetextions">
+      </el-table-column>
+      <el-table-column prop="value" label="Value"> </el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
-import AdvanceForm from "@/components/form/AdvanceForm";
-import {post} from "@/utils/request";
-import {mapGetters} from "vuex";
-import {httpBaseUrl} from "@/config";
-
+import { post } from "@/utils/request";
+import { mapGetters } from "vuex";
 
 export default {
-  components: {AdvanceForm},
-
+  name: "index",
   data() {
     return {
-      loading: false,
-      httpBaseUrl,
-      formSearch: {},
-      tableData: [],
-      total: 0,
-      pageNum: 1
-    }
+      tableData: [
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "all",
+          maxDetextions: "100",
+          value: "0.101",
+        },
+        {
+          k1: "Average Precision",
+          lou: "0.50",
+          area: "all",
+          maxDetextions: "100",
+          value: "0.202",
+        },
+        {
+          k1: "",
+          lou: "0.75",
+          area: "all",
+          maxDetextions: "100",
+          value: "0.091",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "small",
+          maxDetextions: "100",
+          value: "0.021",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "medium",
+          maxDetextions: "100",
+          value: "0.109",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "large",
+          maxDetextions: "100",
+          value: "0.178",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "all",
+          maxDetextions: "1",
+          value: "0.116",
+        },
+        {
+          k1: "Average Recall",
+          lou: "0.50:0.95",
+          area: "all",
+          maxDetextions: "10",
+          value: "0.171",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "all",
+          maxDetextions: "100",
+          value: "0.174",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "small",
+          maxDetextions: "100",
+          value: "0.035",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "medium",
+          maxDetextions: "100",
+          value: "0.171",
+        },
+        {
+          k1: "",
+          lou: "0.50:0.95",
+          area: "large",
+          maxDetextions: "100",
+          value: "0.302",
+        },
+      ],
+    };
   },
   mounted() {
-    const id = this.$route.query.id;
-    this.search();
+    // post('/api/edge/list', {
+    //   username: this.user.name
+    // }).then((res) => {
+    //   this.dataList = res.data;
+    // });
   },
   computed: {
-    ...mapGetters('account', ['user']),
+    ...mapGetters("account", ["user"]),
   },
-  methods: {
-    zf(id) {
-      post("/api/admin/bill/update/", {id: id, status: '已支付'}).then(() => {
-        this.$message.success("支付成功")
-        this.search();
-      });
-    },
-    detail: function (id) {
-      this.$router.push("/bill/detail?id=" + id);
-    },
-    del: function (id) {
-      post("/api/admin/bill/delete/" + id).then(() => {
-        this.$message.success("删除成功")
-        this.search();
-      });
-    },
-    cuijiao(id) {
-      const that = this;
-      post("/api/admin/bill/update", {id: id, status: '已催缴'}).then(res => {
-        that.search();
-      });
-    },
-    search: function () {
-      const that = this;
-      this.formSearch.pageNum = this.pageNum;
-      post("/api/admin/bill/list", this.formSearch).then(res => {
-        that.tableData = res.data.list;
-        that.total = res.data.total;
-        that.pageNum = res.data.pageNum;
-      });
-    },
-    onSubmit: function () {
-      this.pageNum = 1;
-      this.search();
-    },
-    pageChange: function (e) {
-      this.pageNum = e;
-      this.search();
-    },
-  }
-}
+  methods: {},
+};
 </script>
-
-<style lang="less" scoped>
-
+<style>
+.el-dialog,
+.el-pager li,
+.btn-prev,
+.btn-next {
+  background: transparent !important;
+}
+</style>
+<style scoped>
+.datasetItem {
+  width: 95%;
+  height: 70px;
+  padding: 0 25px;
+  background: #ffffff;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
+  margin: 0 auto 20px;
+  /* border-radius: 5px; */
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.pageBox {
+  display: flex;
+  justify-content: flex-end;
+}
+.titBox{
+  display: flex;
+  justify-content: space-between;
+  background: #FFF;
+  padding: 20px;
+}
+.titBox div{
+  text-decoration: underline;
+  cursor: pointer;
+}
 </style>
