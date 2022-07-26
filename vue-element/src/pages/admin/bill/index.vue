@@ -2,7 +2,7 @@
   <div class="home-container">
     <div class="titBox">
       <h2>Dataset 1</h2>
-      <div>Export Report</div>
+      <a :href="`/api/report/export/?username=${user.name}&filename=${path}`" download target="_blank">Export Report</a>
     </div>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="k1"> </el-table-column>
@@ -109,19 +109,42 @@ export default {
           value: "0.302",
         },
       ],
+      path: '',
     };
   },
   mounted() {
-    // post('/api/edge/list', {
-    //   username: this.user.name
-    // }).then((res) => {
-    //   this.dataList = res.data;
-    // });
+    console.log("route = ", this.$route.query.path)
+    if(this.$route.query.path){
+      this.path = this.$route.query.path;
+      post('/api/report/display', {
+        username: this.user.name,
+        filename: this.$route.query.path
+      }).then((res) => {
+        // this.dataList = res.data;
+        let deepdata = [...this.tableData];
+        deepdata.forEach((v, i) => {
+          v.value = res.data[`value${i + 1}`];
+        })
+        this.tableData = deepdata;
+      });
+    }
+
   },
   computed: {
     ...mapGetters("account", ["user"]),
   },
-  methods: {},
+  methods: {
+    handle_export() {
+      if(this.$route.query.path){
+        post('/api/report/export', {
+          username: this.user.name,
+          filename: this.$route.query.path
+        }).then((res) => {
+          
+        });
+      }
+    }
+  },
 };
 </script>
 <style>
