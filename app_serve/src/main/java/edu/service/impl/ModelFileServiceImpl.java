@@ -2,11 +2,16 @@ package edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.domain.Bill;
+import edu.domain.ListResult;
 import edu.domain.ModelFile;
+import edu.domain.Report;
 import edu.dto.ModelFileDto;
+import edu.dto.ReportDto;
 import edu.mapper.ModelFileMapper;
+import edu.mapper.ReportMapper;
 import edu.service.ModelFileService;
 import edu.support.base.service.BaseServiceImpl;
+import edu.support.mybatis.MybatisWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +30,9 @@ import java.util.stream.Collectors;
 public class ModelFileServiceImpl extends BaseServiceImpl<ModelFileMapper, ModelFile> implements ModelFileService {
     @Autowired
     private ModelFileMapper modelFileMapper;
+
+    @Autowired
+    private ReportMapper reportMapper;
 
     @Value("${fast.upload.path}")
     protected String uploadPath;
@@ -49,13 +57,21 @@ public class ModelFileServiceImpl extends BaseServiceImpl<ModelFileMapper, Model
         return path + fileName;
     }
 
-    public List<ModelFile> list(QueryWrapper<ModelFile> wrapper) {
+    public List<ListResult> list(QueryWrapper<ModelFile> wrapper) {
         List<ModelFileDto> files = modelFileMapper.selectDto(wrapper);
         return files.stream().map(file -> {
-            ModelFile tmp = new ModelFile();
+            ListResult tmp = new ListResult();
             tmp.setUsername(file.getUsername());
             String[] parts = file.getPath().split("/");
-            tmp.setPath(parts[parts.length - 1]);
+            String filename = parts[parts.length - 1];
+            tmp.setFilename(filename);
+
+            QueryWrapper<Report> hasResultWrapper = new MybatisWrapper<Report>()
+                    .like("m.username", file.getUsername())
+                    .like("m.filename", filename);
+            ReportDto report = reportMapper.selectDisplayDto(hasResultWrapper);
+            tmp.setHasResult(report == null ? 0 : 1);
+
             return tmp;
         }).collect(Collectors.toList());
     }

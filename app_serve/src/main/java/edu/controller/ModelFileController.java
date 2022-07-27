@@ -2,6 +2,7 @@ package edu.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.domain.Bill;
+import edu.domain.ListResult;
 import edu.domain.ModelFile;
 import edu.service.ModelFileService;
 import edu.support.mybatis.MybatisWrapper;
@@ -40,7 +41,7 @@ public class ModelFileController {
         QueryWrapper<ModelFile> wrapper = new MybatisWrapper<ModelFile>()
                 .like("m.username", username);
 
-        List<ModelFile> files = modelFileService.list(wrapper);
+        List<ListResult> files = modelFileService.list(wrapper);
 
         return JsonResponse.success(files);
     }
