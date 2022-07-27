@@ -41,7 +41,7 @@ logging:
 fast:
   ## 上传文件路径 主要是图片
   upload:
-    path: D:/data_upload/
+    path: D:/data_upload
   ## 下面的可以删除
   generate:
     global:
