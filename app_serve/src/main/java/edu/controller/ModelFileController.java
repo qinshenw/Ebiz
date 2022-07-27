@@ -42,6 +42,7 @@ public class ModelFileController {
                 .like("m.username", username);
 
         List<ListResult> files = modelFileService.list(wrapper);
+        files.sort((o1, o2) -> o2.getHasResult() - o1.getHasResult());
 
         return JsonResponse.success(files);
     }
