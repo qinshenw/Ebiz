@@ -1,18 +1,22 @@
 <template>
   <div class="home-container">
-    <div v-for="(item, i) in dataList" @click="handleDtail(item.path)" :key="i" class="datasetItem">
-      {{ item.path }}
+    <div v-for="(item, i) in dataList"  :key="i" class="datasetItem">
+      <div>{{ item.filename }}</div>
+      <div v-if="item.hasResult == 1">
+        <el-button type="primary"  @click="handleDtail(item.filename)" size="mini" style="margin-right: 10px;">Check Result</el-button>
+        <el-button type="success" size="mini">Export Report</el-button>
+      </div>
     </div>
-    <!-- <button @click="handleDtail('aaa')">测试</button> -->
+    <!-- <button @click="handleDtail('aaa')">dd试</button> -->
     <!-- <div class="pageBox">
       <el-pagination
         @size-change="handleSizeChaedddnge"
-        @current-change="handleCurrentChange"
+        @current-change="handleCurrentChange"ewweewew
         :current-page.sync="currentPage3"
         :page-size="100"
         layout="prev, pager, next"
         :total="1000"
-      >
+      >wew
       </el-pagination>
     </div> -->
   </div>
@@ -71,6 +75,7 @@ export default {
   display: flex;
   align-items: center;
   color: black;
+  justify-content: space-between;
 }
 .pageBox {
   display: flex;
