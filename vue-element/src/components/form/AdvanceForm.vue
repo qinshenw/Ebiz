@@ -102,7 +102,7 @@
                       :defaultFileList="item.data">
               <a-button v-if="item.uploadShow">
                 <a-icon type="upload"/>
-                点击上传
+                click upload
               </a-button>
 
             </a-upload>
