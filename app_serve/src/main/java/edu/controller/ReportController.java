@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
@@ -45,22 +46,17 @@ public class ReportController {
 
     @GetMapping("/export")
     public void export(String username, String filename, HttpServletResponse response) {
-        QueryWrapper<ModelFile> wrapper = new MybatisWrapper<ModelFile>()
-                .like("m.username", username)
-                .likeRight("m.path", "/" + filename);
-        String path = reportService.export(wrapper).getPath();
-        int idx = path.lastIndexOf("/");
-        String filePath = path.substring(0, idx);
-        //待下载文件名
-        String fileName = path.substring(idx + 1);
-        // 设置强制下载不打开
+
+        String path = "/report/" + username + "/";
+        String filePath = uploadPath + path + filename;
+
+
         response.setContentType("application/force-download");
-        // 设置文件名
-        response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
+        response.addHeader("Content-Disposition", "attachment;fileName=" + filename);
         try {
             IOUtils.copy(new FileInputStream(filePath), response.getOutputStream());
         } catch (IOException e) {
-            log.error("下载文件失败", e);
+            log.error("Download Failure", e);
         }
     }
 }

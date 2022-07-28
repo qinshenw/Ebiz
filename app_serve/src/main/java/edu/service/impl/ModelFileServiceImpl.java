@@ -39,7 +39,7 @@ public class ModelFileServiceImpl extends BaseServiceImpl<ModelFileMapper, Model
 
 
     public String upload(MultipartFile file, String username) {
-        String path = "/upload/" + username + "/" + DateFormatUtils.format(new Date(), "yyyy-MM-dd") + "/";
+        String path = "/upload/" + username + "/";
         String fileName = file.getOriginalFilename();
         File newFile = new File(uploadPath + path + fileName);
         newFile.getParentFile().mkdirs();
