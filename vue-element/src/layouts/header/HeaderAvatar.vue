@@ -5,19 +5,19 @@
       <span class="name">{{ user.name }}</span>
     </div>
     <a-menu :class="['avatar-menu']" slot="overlay">
-      <a-menu-item @click="$router.push('/setting/userInfo')">
+      <!-- <a-menu-item @click="$router.push('/setting/userInfo')">
         <a-icon type="user"/>
         <span>Personal Center</span>
-      </a-menu-item>
+      </a-menu-item> -->
       <!--<a-menu-item>
         <a-icon type="setting" />
         <span>设置</span>
       </a-menu-item>
       <a-menu-divider />-->
-      <a-menu-item @click="$router.push('/setting/modifyPwd')">
+      <!-- <a-menu-item @click="$router.push('/setting/modifyPwd')">
         <a-icon type="setting"/>
         <span>Change Password</span>
-      </a-menu-item>
+      </a-menu-item> -->
       <a-menu-divider/>
       <a-menu-item @click="logout">
         <a-icon style="margin-right: 8px;" type="poweroff"/>
