@@ -46,7 +46,8 @@ const options = {
           path: 'dashboard',
           name: 'Dashboard',
           meta: {
-            icon: 'dashboard'
+            icon: 'dashboard',
+            invisible: true
           },
           component: BlankView,
           children: [
@@ -137,13 +138,14 @@ const options = {
           name: 'Display Result',
           meta: {
             icon: 'align-left',
-
+            invisible: true
           },
           component: PageView,
           children: [
             {
               meta: {
                 icon: 'align-left',
+                invisible: true
               },
               path: 'index',
               name: 'Report Result',
@@ -156,6 +158,7 @@ const options = {
           name: 'Export Report',
           meta: {
             icon: 'align-left',
+            invisible: true
           },
           component: PageView,
           children: [
@@ -211,6 +214,7 @@ const options = {
           name: '报修投诉',
           meta: {
             icon: 'align-left',
+            invisible: true
           },
           component: PageView,
           children: [
