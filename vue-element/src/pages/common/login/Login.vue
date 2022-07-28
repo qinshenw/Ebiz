@@ -79,7 +79,7 @@
         this.setRoles(roles)
         setAuthorization(res.data)
         // 获取路由配置
-        this.$router.push('/dashboard/index')
+        this.$router.push('/notice/index')
         this.$messasuccess("Successfully Login, welcome back!", 3)
       },
       changeLan(lang) {
