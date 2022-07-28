@@ -1,14 +1,13 @@
 package edu.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import edu.domain.Bill;
 import edu.domain.ListResult;
 import edu.domain.ModelFile;
 import edu.service.ModelFileService;
+import edu.support.base.controller.BaseController;
 import edu.support.mybatis.MybatisWrapper;
 import edu.support.resp.JsonResponse;
 import edu.support.resp.UploadResp;
-import edu.support.service.FileUploadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/model")
 @Slf4j
-public class ModelFileController {
+public class ModelFileController extends BaseController {
 
     @Autowired
     private ModelFileService modelFileService;
@@ -29,7 +28,7 @@ public class ModelFileController {
     @PostMapping("/upload")
     public JsonResponse<UploadResp> upload(MultipartFile file, String username) {
         if (file == null || file.isEmpty()) {
-            return JsonResponse.fail("请选择要上传的文件");
+            return JsonResponse.fail("Choose a file");
         }
         String path = modelFileService.upload(file, username);
         return JsonResponse.success(new UploadResp(username, path, null));

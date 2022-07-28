@@ -6,9 +6,9 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * 分页的基础
+ * page base
  *
- * @author 执笔
+ * @author wqs
  * @date  10:09
  */
 @Getter

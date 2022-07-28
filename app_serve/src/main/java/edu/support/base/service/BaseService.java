@@ -11,16 +11,16 @@ import java.util.List;
 
 
 /**
- * 基础 service
+ * base service
  *
  * @param <T>
- * @author 执笔
+ * @author wqs
  */
 public interface BaseService<T extends BaseDomain> extends IService<T> {
 
 
     /**
-     * 根据条件分页
+     * conditional paging
      *
      * @param rowPage
      * @param wrapper
@@ -30,7 +30,7 @@ public interface BaseService<T extends BaseDomain> extends IService<T> {
 
 
     /**
-     * 根据某一列查询全部
+     * query column
      * @param column
      * @param val
      * @return
@@ -39,7 +39,7 @@ public interface BaseService<T extends BaseDomain> extends IService<T> {
 
 
     /**
-     * 查询数量
+     * query amount
      * @param column
      * @param val
      * @return
@@ -48,7 +48,7 @@ public interface BaseService<T extends BaseDomain> extends IService<T> {
 
 
     /**
-     * 查询一个
+     * query one
      * @param column
      * @param val
      * @return

@@ -62,9 +62,7 @@ public class ReportServiceImpl extends BaseServiceImpl<ReportMapper, Report> imp
     private boolean writeFile(String content,String filepath) {
         boolean flag=false;
         try {
-            //写入的txt文档的路径
             PrintWriter pw=new PrintWriter(filepath);
-            //写入的内容
             pw.write(content);
             pw.flush();
             pw.close();

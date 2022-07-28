@@ -13,9 +13,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * WebMvc配置
+ * WebMvc Configuration
  *
- * @author 执笔
+ * @author wqs
  * @date 14:32
  */
 @Configuration
@@ -32,7 +32,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                // 方便前端获取
                 .exposedHeaders("X-Auth-Token")
                 .allowedOrigins("*")
                 .allowedMethods("*")

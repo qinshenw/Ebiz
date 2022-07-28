@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 登录拦截器
+ * Login interceptor
  *
- * @author 执笔
+ * @author wqs
  */
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object attribute = request.getSession().getAttribute("loginUser");
         if (null == attribute) {
-            // 跳转登录
+
             String utf8 = "utf-8";
             String application = "application/json";
             try {

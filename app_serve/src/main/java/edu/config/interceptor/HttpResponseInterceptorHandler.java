@@ -13,10 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 跨域拦截器
- * 参数处理
+ * Cross domain interceptors
  *
- * @author 执笔
+ * @author wqs
  * @date 14:31
  */
 @Component
@@ -38,7 +37,7 @@ public class HttpResponseInterceptorHandler implements HandlerInterceptor {
             String element = headerNames.nextElement();
             headers.put(element, request.getHeader(element));
         }
-        log.info(" -- 请求 --   uri：{}  params：{}   headers：{}", uri, JSONUtil.toJsonStr(parameterMap), headers);
+        log.info(" -- request --   uri：{}  params：{}   headers：{}", uri, JSONUtil.toJsonStr(parameterMap), headers);
 
         return true;
     }

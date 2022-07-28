@@ -12,9 +12,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 同时支持 cookie 和 header
+ * Both cookies and headers are supported
  *
- * @author 执笔
+ * @author wqs
  * @date 15:39
  */
 public class HeaderCookieHttpSessionIdResolver implements HttpSessionIdResolver {
@@ -24,7 +24,7 @@ public class HeaderCookieHttpSessionIdResolver implements HttpSessionIdResolver 
     private static final String WRITTEN_SESSION_ID_ATTR = CookieHttpSessionIdResolver.class.getName().concat(".WRITTEN_SESSION_ID_ATTR");
 
     /**
-     * cookie 解析器
+     * cookie resolver
      */
     private final CookieSerializer cookieSerializer = new DefaultCookieSerializer();
 
@@ -38,12 +38,12 @@ public class HeaderCookieHttpSessionIdResolver implements HttpSessionIdResolver 
      */
     @Override
     public List<String> resolveSessionIds(HttpServletRequest request) {
-        // 首先获取请求头
+        // get header
         String headerValue = request.getHeader(HEADER_X_AUTH_TOKEN);
         if (!StringUtils.isEmpty(headerValue)) {
             return Collections.singletonList(headerValue);
         }
-        // cookie 解析
+        // cookie resolve
         return this.cookieSerializer.readCookieValues(request);
     }
 

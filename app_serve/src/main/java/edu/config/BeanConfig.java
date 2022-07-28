@@ -3,8 +3,8 @@ package edu.config;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 配置
- * @author 执笔
+ * Configuration
+ * @author wqs
  * @date  19:27
  */
 @Configuration

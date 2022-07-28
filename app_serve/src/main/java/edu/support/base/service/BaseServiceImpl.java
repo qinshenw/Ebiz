@@ -15,10 +15,10 @@ import java.util.List;
 
 
 /**
- * 基础 service 实现
+ * base service
  *
  * @param <T>
- * @author 执笔
+ * @author wqs
  */
 public class BaseServiceImpl<E extends BaseMapper<T>, T extends BaseDomain> extends ServiceImpl<E, T> implements BaseService<T> {
 
@@ -53,7 +53,7 @@ public class BaseServiceImpl<E extends BaseMapper<T>, T extends BaseDomain> exte
     }
 
     /**
-     * 开始分页
+     * start paging
      *
      * @param page
      */

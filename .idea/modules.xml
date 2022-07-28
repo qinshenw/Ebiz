@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Ebiz.iml" filepath="$PROJECT_DIR$/.idea/Ebiz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app_serve/vue_wygl_210507.iml" filepath="$PROJECT_DIR$/app_serve/vue_wygl_210507.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_serve/app_serve.iml" filepath="$PROJECT_DIR$/app_serve/app_serve.iml" />
     </modules>
   </component>
 </project>

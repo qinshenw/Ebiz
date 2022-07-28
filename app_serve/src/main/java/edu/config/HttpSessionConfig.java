@@ -9,10 +9,9 @@ import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHtt
 import org.springframework.session.web.http.HttpSessionIdResolver;
 
 /**
- * session 配置  使用请求头来确定session
- * 过期的会自动清除
+ * session configuration  specify session by request header
  *
- * @author 执笔
+ * @author wqs
  * @date 13:39
  */
 @Configuration
@@ -20,7 +19,6 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
 public class HttpSessionConfig {
 
     /**
-     * 请求头里面
      * X-Auth-Token
      *
      * @return

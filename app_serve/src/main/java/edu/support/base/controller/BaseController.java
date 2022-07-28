@@ -2,7 +2,6 @@ package edu.support.base.controller;
 
 
 import edu.domain.User;
-import edu.support.context.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 /**
- * 基础控制器
+ * base controller
  *
  * @author 执笔
  * @date 19:32

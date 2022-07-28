@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edu.domain.ModelFile;
 import edu.domain.Report;
 import edu.service.ReportService;
+import edu.support.base.controller.BaseController;
 import edu.support.mybatis.MybatisWrapper;
 import edu.support.resp.JsonResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/report")
 @Slf4j
-public class ReportController {
+public class ReportController extends BaseController {
 
     @Autowired
     private ReportService reportService;
