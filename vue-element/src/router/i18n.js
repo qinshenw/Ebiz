@@ -1,7 +1,7 @@
 module.exports = {
   messages: {
     CN: {
-      home: {name: '首页'},
+      home: {name: 'home'},
     },
     US: {
       home: {name: 'home'},
