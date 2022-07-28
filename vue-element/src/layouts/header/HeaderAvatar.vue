@@ -7,7 +7,7 @@
     <a-menu :class="['avatar-menu']" slot="overlay">
       <a-menu-item @click="$router.push('/setting/userInfo')">
         <a-icon type="user"/>
-        <span>个人中心</span>
+        <span>Personal Center</span>
       </a-menu-item>
       <!--<a-menu-item>
         <a-icon type="setting" />
@@ -16,12 +16,12 @@
       <a-menu-divider />-->
       <a-menu-item @click="$router.push('/setting/modifyPwd')">
         <a-icon type="setting"/>
-        <span>修改密码</span>
+        <span>Change Password</span>
       </a-menu-item>
       <a-menu-divider/>
       <a-menu-item @click="logout">
         <a-icon style="margin-right: 8px;" type="poweroff"/>
-        <span>退出登录</span>
+        <span>Log out</span>
       </a-menu-item>
     </a-menu>
   </a-dropdown>
