@@ -30,7 +30,7 @@ const routerMap = {
   },
   root: {
     path: '/',
-    name: '首页',
+    name: 'main',
     redirect: '/login',
     component: view.tabs
   },
