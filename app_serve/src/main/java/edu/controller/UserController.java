@@ -39,7 +39,7 @@ public class UserController extends BaseController {
      * @param password
      * @return
      */
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public JsonResponse login(String username, @RequestParam(defaultValue = "") String password) {
         log.info("User login" + username);
         QueryWrapper<User> queryWrapper = new QueryWrapper<User>()
@@ -67,7 +67,7 @@ public class UserController extends BaseController {
      * @param password
      * @return
      */
-    @RequestMapping("register")
+    @RequestMapping("/register")
     public JsonResponse register(String username, @RequestParam(defaultValue = "") String password, @RequestParam(defaultValue = "") String code, String flag) {
         log.info("User register:" + username);
         QueryWrapper<User> wrapper = new QueryWrapper<User>().eq("username", username);

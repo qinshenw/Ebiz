@@ -47,6 +47,9 @@ public class ModelFileServiceImpl extends BaseServiceImpl<ModelFileMapper, Model
             modelFile.setUsername(username);
             modelFile.setPath(uploadPath + path + fileName);
             save(modelFile);
+
+            // TODO: Tell Tony file is uploaded and let him write into table using username and filename
+            // connectToTonysAPI(username, fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
