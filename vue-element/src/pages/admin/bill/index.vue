@@ -2,7 +2,7 @@
   <div class="home-container">
     <div class="titBox">
       <h2>Dataset 1</h2>
-      <a :href="`/api/report/export/?username=${user.name}&filename=${path}`" download target="_blank">Export Report</a>
+      <!-- <a :href="`/api/report/export/?username=${user.name}&filename=${path}`" download target="_blank">Export Report</a> -->
     </div>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="k1"> </el-table-column>
