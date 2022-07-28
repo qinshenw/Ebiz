@@ -261,7 +261,7 @@ const options = {
         },
         {
           path: 'userInfo',
-          name: '个人信息',
+          name: 'userInfo',
           component: () => import('@/pages/setting/userInfo'),
         }
       ]
