@@ -4,7 +4,7 @@
       <div>{{ item.filename }}</div>
       <div v-if="item.hasResult == 1">
         <el-button type="primary"  @click="handleDtail(item.filename)" size="mini" style="margin-right: 10px;">Check Result</el-button>
-        <el-button type="success" size="mini">Export Report</el-button>
+        <el-button @click="export_report(item)" type="success" size="mini">Export Report</el-button>
       </div>
     </div>
     <!-- <button @click="handleDtail('aaa')">dd试</button> -->
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { post } from "@/utils/request";
+import { post, get } from "@/utils/request";
 import { mapGetters } from "vuex";
 
 export default {
@@ -51,6 +51,11 @@ export default {
           path
         }
       })
+    },
+    export_report(item) {
+      get(`/api/report/export?username=${this.user.name}&filename=${item.filename}`).then((res) => {
+        console.log("res = ", res)
+      });
     }
   },
 };
