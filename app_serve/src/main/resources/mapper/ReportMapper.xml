@@ -8,10 +8,4 @@
             ${ew.customSqlSegment}
     </select>
 
-    <select id="selectExportDto" resultType="edu.dto.ModelFileDto">
-        select m.username. m.path
-        from model_file m
-            ${ew.customSqlSegment}
-    </select>
-
 </mapper>

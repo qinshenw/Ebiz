@@ -11,5 +11,4 @@ import org.apache.ibatis.annotations.Param;
 public interface ReportMapper extends BaseMapper<Report> {
     ReportDto selectDisplayDto(@Param("ew") QueryWrapper<Report> wrapper);
 
-    ModelFileDto selectExportDto(@Param("ew") QueryWrapper<ModelFile> wrapper);
 }

@@ -11,5 +11,5 @@ public interface ReportService extends BaseService<Report> {
 
     Report display(QueryWrapper<Report> wrapper);
 
-    ModelFile export(QueryWrapper<ModelFile> wrapper);
+    boolean export(QueryWrapper<Report> wrapper, String filepath);
 }

@@ -48,15 +48,23 @@ public class ReportController {
     public void export(String username, String filename, HttpServletResponse response) {
 
         String path = "/report/" + username + "/";
-        String filePath = uploadPath + path + filename;
+        String filePath = uploadPath + path + filename + ".txt";
 
+        QueryWrapper<Report> wrapper = new MybatisWrapper<Report>()
+                .like("m.username", username)
+                .like("m.filename", filename);
 
-        response.setContentType("application/force-download");
-        response.addHeader("Content-Disposition", "attachment;fileName=" + filename);
-        try {
-            IOUtils.copy(new FileInputStream(filePath), response.getOutputStream());
-        } catch (IOException e) {
-            log.error("Download Failure", e);
+        boolean updateReport = reportService.export(wrapper, filePath);
+        if (!updateReport) log.error("Download Failure");
+        else {
+            response.setContentType("application/force-download");
+            response.addHeader("Content-Disposition", "attachment;fileName=" + filename);
+            try {
+                IOUtils.copy(new FileInputStream(filePath), response.getOutputStream());
+            } catch (IOException e) {
+                log.error("Download Failure", e);
+            }
         }
+
     }
 }
