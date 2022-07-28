@@ -25,14 +25,14 @@ export default {
     return {
       tableData: [
         {
-          k1: "",
+          k1: "Average Precision",
           lou: "0.50:0.95",
           area: "all",
           maxDetextions: "100",
           value: "0.101",
         },
         {
-          k1: "Average Precision",
+          k1: "",
           lou: "0.50",
           area: "all",
           maxDetextions: "100",
@@ -67,14 +67,14 @@ export default {
           value: "0.178",
         },
         {
-          k1: "",
+          k1: "Average Recall",
           lou: "0.50:0.95",
           area: "all",
           maxDetextions: "1",
           value: "0.116",
         },
         {
-          k1: "Average Recall",
+          k1: "",
           lou: "0.50:0.95",
           area: "all",
           maxDetextions: "10",
